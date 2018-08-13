@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
-
     <ImageButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,6 +19,8 @@
         android:id="@+id/video_view"
         android:layout_above="@id/play_Icon"
         />
+
+
 
     <RelativeLayout
         android:layout_above="@id/play_Icon"
