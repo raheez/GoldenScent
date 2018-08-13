@@ -5,10 +5,18 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.VideoView;
+
+import com.developer.raheez.goldenscent.Adapter.RecyclerViewAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -19,6 +27,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ProgressDialog progressDialog;
 
     String video_url = "http://184.72.239.149/vod/smil:BigBuckBunny.smil/playlist.m3u8";
+    private ArrayList<String> images;
+    String image_url = "https://picsum.photos/300/20";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +41,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         playIcon.setOnClickListener(this);
+
+
+        images = new ArrayList<>();
+        getimages();
 
     }
 
@@ -80,5 +96,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
+    }
+
+    public void getimages() {
+
+       for (int i=0;i<7;i++){
+
+
+           images.add(image_url+i);
+           Log.d("MainActivity","the image url is  " +images.get(i));
+
+       }
+
+       initRecyclerView();
+    }
+    private void initRecyclerView(){
+//        Log.d(TAG, "initRecyclerView: init recyclerview");
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        recyclerView.setLayoutManager(layoutManager);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(getApplicationContext(),images);
+        recyclerView.setAdapter(adapter);
     }
 }

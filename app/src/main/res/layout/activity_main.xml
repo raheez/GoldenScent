@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
-
     <ImageButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,14 +25,28 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/faded_rv"
-        android:background="@color/colorPrimaryDark"
-        android:alpha="0.7">
+        android:alpha="1.0">
 
-        <TextView
-            android:text="texview inside rv"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:weightSum="1"
+            android:orientation="vertical">
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.3"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.7"
+                android:alpha="0.7"
+                android:orientation="horizontal">
+
+            </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
     </RelativeLayout>
-
 </RelativeLayout>

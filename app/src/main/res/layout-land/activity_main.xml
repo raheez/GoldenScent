@@ -20,8 +20,6 @@
         android:layout_above="@id/play_Icon"
         />
 
-
-
     <RelativeLayout
         android:layout_above="@id/play_Icon"
         android:layout_width="match_parent"
@@ -41,18 +39,14 @@
                 android:layout_weight="0.3"/>
 
             <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="0.7"
                 android:alpha="0.7"
-                android:background="@color/colorPrimaryDark">
+                android:orientation="horizontal">
 
             </android.support.v7.widget.RecyclerView>
-
         </LinearLayout>
-
-
-
     </RelativeLayout>
-
 </RelativeLayout>
