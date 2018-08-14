@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/play_icon"
         android:id="@+id/play_Icon"
+        android:onClick="play_icon_click"
         android:layout_alignParentBottom="true"/>
 
     <VideoView
@@ -36,12 +37,12 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.3"/>
+                android:layout_weight="0.35"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.7"
+                android:layout_weight="0.65"
                 android:alpha="0.7"
                 android:background="@color/colorPrimaryDark"
                 >
@@ -52,13 +53,13 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:orientation="horizontal"
-                    android:layout_marginBottom="20dp">
+                    android:layout_marginBottom="10dp">
 
                 </android.support.v7.widget.RecyclerView>
 
                 <ImageButton
                     android:id="@+id/previous_button"
-                    android:layout_above="@id/recycler_view"
+                    android:layout_alignParentTop="true"
                     android:layout_width="50dp"
                     android:layout_height="35dp"
                     android:onClick="previous_click"
@@ -66,12 +67,13 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignLeft="@+id/recycler_view"
                     android:layout_marginLeft="10dp"
-                    android:src="@drawable/left_icon"/>
+                    android:src="@drawable/left_icon"
+                    android:layout_marginTop="10dp"/>
 
 
                 <ImageButton
                     android:id="@+id/next_button"
-                    android:layout_above="@id/recycler_view"
+                    android:layout_alignParentTop="true"
                     android:layout_width="50dp"
                     android:layout_height="35dp"
                     android:onClick="next_click"
@@ -79,7 +81,8 @@
                     android:layout_alignParentRight="true"
                     android:layout_alignRight="@+id/recycler_view"
                     android:layout_marginRight="10dp"
-                    android:src="@drawable/right_icon"/>
+                    android:src="@drawable/right_icon"
+                    android:layout_marginTop="10dp"/>
 
             </RelativeLayout>
 
