@@ -3,6 +3,9 @@ package com.developer.raheez.goldenscent;
 import android.app.ProgressDialog;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Build;
+import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -21,16 +24,20 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    VideoView videoView;
-    ImageButton playIcon;
+    public VideoView videoView;
+    public ImageButton playIcon,previous_icon,next_icon;
+    public LinearLayoutManager layoutManager;
+    public ProgressDialog progressDialog;
 
-    ProgressDialog progressDialog;
-
-    String video_url = "http://184.72.239.149/vod/smil:BigBuckBunny.smil/playlist.m3u8";
+    public RecyclerView recyclerView;
+    public RecyclerViewAdapter adapter;
+    public String video_url = "http://184.72.239.149/vod/smil:BigBuckBunny.smil/playlist.m3u8";
     private ArrayList<String> images;
-    String image_url = "https://picsum.photos/300/20";
+    public String image_url = "https://picsum.photos/300/20";
 
+    int position =0;
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +46,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         videoView = (VideoView) findViewById(R.id.video_view);
         playIcon = (ImageButton) findViewById(R.id.play_Icon);
 
+        previous_icon = (ImageButton) findViewById(R.id.previous_button);
+        next_icon = (ImageButton) findViewById(R.id.next_button);
 
         playIcon.setOnClickListener(this);
 
@@ -46,6 +55,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         images = new ArrayList<>();
         getimages();
 
+
+
+
+
+    }
+
+    public void previous_click(View view){
+
+
+
+        int pos = layoutManager.findFirstCompletelyVisibleItemPosition();
+        if (pos >=0 &&pos <7)
+            pos --;
+        recyclerView.getLayoutManager().scrollToPosition(pos );
+    }
+
+    public void next_click(View view){
+
+        int pos = layoutManager.findLastCompletelyVisibleItemPosition();
+        if (pos >=0 &&pos <7)
+            pos ++;
+        recyclerView.getLayoutManager().scrollToPosition(pos );
     }
 
     @Override
@@ -110,13 +141,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
        initRecyclerView();
     }
+
     private void initRecyclerView(){
 //        Log.d(TAG, "initRecyclerView: init recyclerview");
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(layoutManager);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(getApplicationContext(),images);
+        adapter = new RecyclerViewAdapter(getApplicationContext(),images);
         recyclerView.setAdapter(adapter);
     }
 }
