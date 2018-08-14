@@ -1,11 +1,14 @@
 package com.developer.raheez.goldenscent.Adapter;
 
 import android.content.Context;
+import android.graphics.Point;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -24,11 +27,23 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
          this.mContext = context;
      }
 
+    public int getScreenWidth() {
+
+        WindowManager wm = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+         Point size = new Point();
+        display.getSize(size);
+
+         return size.x;
+    }
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
 
          View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.list_item,viewGroup,false );
-         return new ViewHolder(view);
+        view.getLayoutParams().width = (int) (getScreenWidth() / 3); /// THIS LINE WILL DIVIDE OUR VIEW INTO NUMBERS OF PARTS
+
+        return new ViewHolder(view);
     }
 
     @Override
