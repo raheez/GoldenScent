@@ -69,7 +69,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/home/raheez/Downloads/Raheez/android-studio/plugins/android/lib/android.jar!/images/material_design_icons/hardware/ic_keyboard_arrow_left_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/home/raheez/Downloads/Raheez/android-studio/plugins/android/lib/android.jar!/images/material_design_icons/av/ic_play_circle_outline_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -80,7 +80,7 @@
                         <option name="values">
                           <map>
                             <entry key="color" value="ff724b" />
-                            <entry key="outputName" value="left_icon" />
+                            <entry key="outputName" value="play_icon" />
                             <entry key="sourceFile" value="$USER_HOME$" />
                           </map>
                         </option>

@@ -75,12 +75,16 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         adapter = new RecyclerViewAdapter(getApplicationContext(),images);
         recyclerView.setAdapter(adapter);
+
+        int number = Integer.MAX_VALUE / images.size() / 2;
+        recyclerView.getLayoutManager().scrollToPosition(number * images.size());
+
     }
 
     public void previous_click(View view){
 
         int pos = layoutManager.findFirstCompletelyVisibleItemPosition();
-        if (pos >0 &&pos <7)
+
             pos --;
         recyclerView.smoothScrollToPosition(pos);
     }
@@ -88,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
     public void next_click(View view){
 
         int pos = layoutManager.findLastCompletelyVisibleItemPosition();
-        if (pos >=0 &&pos <7)
+
             pos ++;
 
         recyclerView.smoothScrollToPosition(pos);
@@ -113,7 +117,18 @@ public class MainActivity extends AppCompatActivity {
         progressDialog.show();
 
 
+        videoView.requestFocus();
+        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mediaPlayer) {
 
+                progressDialog.dismiss();
+                mediaPlayer.setLooping(true);
+                videoView.start();
+                playIcon.setImageResource(R.drawable.stop_icon);
+                mediaPlayer.setVolume(0,0);
+            }
+        });
 
         try {
 
@@ -130,6 +145,13 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
             }
+            else if (videoView.isPlaying()){
+
+                progressDialog.dismiss();
+                videoView.stopPlayback();
+                playIcon.setImageResource(R.drawable.play_icon);
+
+            }
             else {
                 videoView.pause();
                 playIcon.setImageResource(R.drawable.play_icon);
@@ -140,17 +162,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        videoView.requestFocus();
-        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mediaPlayer) {
 
-                progressDialog.dismiss();
-                mediaPlayer.setLooping(true);
-                videoView.start();
-                playIcon.setImageResource(R.drawable.play_icon);
-            }
-        });
     }
 
     public void getimages() {

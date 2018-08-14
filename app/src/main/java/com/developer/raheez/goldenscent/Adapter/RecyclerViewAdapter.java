@@ -49,16 +49,31 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
 
+
+        int positionInList = i % mImageUrls.size();
+
+//        Glide.with(mContext)
+//                .asBitmap()
+//                .load(mImageUrls.get(i))
+//                .into(viewHolder.imageView);
+//
+
+
         Glide.with(mContext)
                 .asBitmap()
-                .load(mImageUrls.get(i))
+                .load(mImageUrls.get(positionInList))
                 .into(viewHolder.imageView);
+
     }
 
     @Override
     public int getItemCount() {
-        return mImageUrls.size();
+//        return mImageUrls.size();
+        return Integer.MAX_VALUE;
+
     }
+
+
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
