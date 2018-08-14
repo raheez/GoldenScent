@@ -24,6 +24,7 @@
                 android:layout_height="match_parent"
                 android:src="@drawable/image_icon"
                 android:scaleType="fitXY"
+                android:background="@drawable/ripple_effect"
 
 
                 />
