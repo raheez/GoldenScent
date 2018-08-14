@@ -63,12 +63,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void previous_click(View view){
 
-
-
         int pos = layoutManager.findFirstCompletelyVisibleItemPosition();
-        if (pos >=0 &&pos <7)
+        if (pos >0 &&pos <7)
             pos --;
-        recyclerView.getLayoutManager().scrollToPosition(pos );
+        recyclerView.smoothScrollToPosition(pos);
     }
 
     public void next_click(View view){
@@ -76,7 +74,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int pos = layoutManager.findLastCompletelyVisibleItemPosition();
         if (pos >=0 &&pos <7)
             pos ++;
-        recyclerView.getLayoutManager().scrollToPosition(pos );
+
+        recyclerView.smoothScrollToPosition(pos);
     }
 
     @Override
