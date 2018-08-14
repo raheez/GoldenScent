@@ -60,7 +60,9 @@
                     android:onClick="previous_click"
                     android:src="@drawable/left_icon"
                     android:clickable="true"
-                    android:layout_marginTop="20dp"/>
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/circle_bg_shape"
+                    />
 
 
                 <ImageButton
@@ -74,7 +76,8 @@
                     android:layout_alignRight="@+id/recycler_view"
                     android:layout_marginRight="10dp"
                     android:src="@drawable/right_icon"
-                    android:layout_marginTop="20dp"/>
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/circle_bg_shape"/>
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/recycler_view"

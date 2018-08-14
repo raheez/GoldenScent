@@ -17,6 +17,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.developer.raheez.goldenscent.Adapter.RecyclerViewAdapter;
@@ -46,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        play_video();
 
         videoView = (VideoView) findViewById(R.id.video_view);
         playIcon = (ImageButton) findViewById(R.id.play_Icon);
@@ -58,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
 
         images = new ArrayList<>();
         getimages();
+        play_video();
+
 
 
 
@@ -95,7 +97,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void play_icon_click(View view) {
 
+        if (haveNetworkConnection())
         play_video();
+//        else
+
 
     }
 
