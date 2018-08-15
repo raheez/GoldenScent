@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,6 +18,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 import android.widget.VideoView;
 
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     public String image_url = "https://picsum.photos/300/20";
 
 
+
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +61,10 @@ public class MainActivity extends AppCompatActivity {
 
         images = new ArrayList<>();
         getimages();
-        play_video();
-
+        if (haveNetworkConnection())
+            play_video();
+        else
+            Toast.makeText(getApplicationContext(),"No Internet Connection",Toast.LENGTH_SHORT).show();
 
 
 
@@ -103,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (haveNetworkConnection())
         play_video();
-//        else
+        Toast.makeText(getApplicationContext(),"No Internet Connection",Toast.LENGTH_SHORT).show();
 
 
     }
@@ -197,5 +202,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    
 
 }
